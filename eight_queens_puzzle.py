@@ -12,7 +12,7 @@ def create_initial_population(number):
     """
     Generating the intial population from the number of queens
     """
-    population = [[random.randint(1, number) for _ in range(number) ] for _ in range(10)]
+    population = [[random.randint(1, number) for _ in range(number) ] for _ in range(100)]
     return population
 
 def find_score(variant):
@@ -81,12 +81,7 @@ def genetic_queen(population, find_score):
         if find_score(child) == high_score: break
     return new_population
 
-
-if __name__ == "__main__":
-    num = 8 #say N = 8
-    global high_score
-    high_score = (num*(num-1))/2
-    print(high_score)
+def solve(num):
     initial_population = create_initial_population(num)
     generation = 1
     population_scores = [find_score(pop) for pop in initial_population]
@@ -106,7 +101,17 @@ if __name__ == "__main__":
     board = []
     for x in range(num):
         board.append(num-chrom_out[i])
-    print(board)
+    return board
+    
+
+
+if __name__ == "__main__":
+    num = 8 #say N = 8
+    global high_score
+    high_score = (num*(num-1))/2
+    right_sequence = solve(num)
+    print(right_sequence)
+    
         
     
     
